@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Need to get in touch? Email info@slapchris.com -->
+  <!-- Author: Tyler Hamilton -->
+  <!-- Follow me on Twitter! @tylerjamilton -->
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-5L758NV");
+    </script>
+    <!-- End Google Tag Manager -->
+    <script
+      async
+      data-ad-client="pub-3359080986057282"
+      data-ad-frequency-hint="30s"
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ></script>
+    <script>
+      window.adsbygoogle = window.adsbygoogle || [];
+      var adBreak = (adConfig = function (o) {
+        adsbygoogle.push(o);
+      });
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="library/p5.min.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="library/addons/p5.sound.min.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="library/p5.dom.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/site.webmanifest" />
+    <link rel="stylesheet" href="style.css?v=1.6" />
+    <title>How fast can you slap Chris Rock?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="The fastes slaps require the strongest Wills. Unleash your inner Slap Smith and see how fast you can slap Chris Rock."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://slapchris.com" />
+    <meta property="og:title" content="How fast can you slap Chris Rock?" />
+    <meta
+      property="og:description"
+      content="The fastes slaps require the strongest Wills. Unleash your inner Slap Smith and see how fast you can slap Chris Rock."
+    />
+    <meta
+      property="og:image"
+      content="https://slapchris.com/assets/banner.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://slapchris.com" />
+    <meta name="twitter:title" content="How fast can you slap Chris Rock?" />
+    <meta
+      name="twitter:description"
+      content="The fastes slaps require the strongest Wills. Unleash your inner Slap Smith and see how fast you can slap Chris Rock."
+    />
+    <meta
+      name="twitter:image"
+      content="https://slapchris.com/assets/banner.jpg"
+    />
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5L758NV"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="p5_loading" class="loadingclass">
+      <div class="loadingIcon rotating"></div>
+    </div>
+    <div id="april-fools" class="unselectable" onclick="toggleAprilFools()">
+      <!-- <div class="exit-button">x</div> -->
+      <div class="banner-content">
+        <b>🎉 April Fools!</b> <span class="fake-link">Click here</span> to go
+        back to Chris Rock.
+      </div>
+    </div>
+    <div id="container" class="unselectable">
+      <div class="scores">
+        <span id="score" class="unselectable" onclick="swapUnit()">0km/h</span>
+        <div id="tweet">
+          <a
+            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=I%20slapped%20Chris%20Rock%200km%2Fh%21&hashtags=SlapChrisRock"
+            >Tweet your score.</a
+          ><br /><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com" target="_blank" class="share-popup">Share on Facebook.</a
+          >
+        </div>
+      </div>
+
+      <div id="donation">
+        ☕ <a href="https://ko-fi.com/abrahamilton">Buy me a coffee.</a>
+      </div>
+
+      <div id="units" onclick="swapUnit()">Slap in Freedom Units 🇺🇸</div>
+    </div>
+
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="./main.js?version=1.03"
+    ></script>
+  <!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "30ed15d6f92a40da9451fa1d441e8709"}'></script><!-- Cloudflare Pages Analytics --></body>
+</html>
