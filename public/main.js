@@ -305,7 +305,7 @@ function draw() {
     score.innerHTML = `${speed}${metric ? "χμ/ώρα" : "Μνημόνια"}`;
     tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fkoulism.herokuapp.com%2F&text=%CE%A7%CE%B1%CF%83%CF%84%CE%BF%CF%8D%CE%BA%CE%B9%CF%83%CE%B1%20%CF%84%CE%BF%CE%BD%20%CE%9A%CE%BF%CF%8D%CE%BB%CE%B7%20%CE%BC%CE%B5%20${speed}${
       metric ? "χμ/ώρα" : "Μνημόνια"
-    }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkoulism.herokuapp.com%2F&quote=%CE%A7%CE%B1%CF%83%CF%84%CE%BF%CF%8D%CE%BA%CE%B9%CF%83%CE%B1%20%CF%84%CE%BF%CE%BD%20%CE%9A%CE%BF%CF%8D%CE%BB%CE%B7%20%CE%BC%CE%B5%20${speed}${
+    }%21&hashtags=mitsotakis">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkoulism.herokuapp.com%2F&quote=%CE%A7%CE%B1%CF%83%CF%84%CE%BF%CF%8D%CE%BA%CE%B9%CF%83%CE%B1%20%CF%84%CE%BF%CE%BD%20%CE%9A%CE%BF%CF%8D%CE%BB%CE%B7%20%CE%BC%CE%B5%20${speed}${
       metric ? "χμ/ώρα" : "Μνημόνια"
     }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
     jiggy.stop();
