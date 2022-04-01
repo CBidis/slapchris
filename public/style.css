@@ -185,7 +185,7 @@ span.fake-link {
     height: 100px;
     position: absolute;
     bottom: 141px;
-    margin: auto 50%;
+    margin: auto 48%;
 }
 
 @media screen and (max-width: 500px) {
