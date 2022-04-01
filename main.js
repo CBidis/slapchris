@@ -33,14 +33,6 @@ function Face() {
   this.xpos = W - this.width - 20;
   this.collision = false;
 
-  if (!!isAprilFools && !disableAprilFools) {
-    this.graphics = {
-      face: koulis,
-      slapLeft: will_slapLeft,
-      slapRight: will_slapRight,
-    };
-  }
-
   this.show = function () {
     image(this.graphics.face, this.xpos, this.ypos, this.width, this.height);
     noFill();
@@ -150,8 +142,6 @@ function Hand() {
 var face;
 var hand;
 
-let isAprilFools = false;
-let disableAprilFools = false;
 let metric = true;
 let startScreen = 0;
 let container = document.getElementById("container");
@@ -162,9 +152,6 @@ let secretCounter = 0;
 function mousePressed() {
   if (startScreen === 1) {
     startScreen = 0;
-    if (isAprilFools) {
-      document.getElementById("april-fools").classList.toggle("banner-drop-in");
-    }
   }
 
   if (hand.onBall(mouseX, mouseY)) hand.startDrag();
@@ -172,9 +159,6 @@ function mousePressed() {
 
 function touchStarted() {
   if (startScreen === 1) {
-    if (isAprilFools) {
-      document.getElementById("april-fools").classList.toggle("banner-drop-in");
-    }
     window.navigator.getUserMedia = (...args) =>
       window.navigator.mediaDevices.getUserMedia(...args);
     userStartAudio();
@@ -210,14 +194,7 @@ function preload() {
   slapsfxfish = loadSound("assets/slap_fish.mp3");
   giati_gelate = createAudio("./assets/atakes/giati_gelate.mp3");
   jiggy = loadSound("assets/jiggy.mp3");
-  // Chris Rock Faces
-  chris = loadImage("assets/chris.png");
-  slapRight = loadImage("assets/slap_right.png");
-  slapLeft = loadImage("assets/slap_left.png");
-  // Will Smith Faces
-  will = loadImage("assets/will.png");
-  will_slapLeft = loadImage("assets/will_slapleft.png");
-  will_slapRight = loadImage("assets/will_slapright.png");
+
   // Hands
   handstart = loadImage("assets/hand2.png");
   rarehand1 = loadImage("assets/rarehand1.png");
@@ -245,9 +222,6 @@ function preload() {
 }
 
 function setup() {
-  // Check April Fools
-  const today = new Date();
-  isAprilFools = today.getMonth() === 3 && today.getDate() === 1;
   var cnv = createCanvas(W, H);
   cnv.parent("container");
   cnv.style("z-index", "0");
@@ -261,10 +235,6 @@ function setup() {
   face = new Face();
   if (W <= 500) {
     startScreen = 1;
-  } else {
-    if (isAprilFools) {
-      document.getElementById("april-fools").classList.toggle("banner-drop-in");
-    }
   }
 }
 function initScreen() {
@@ -327,15 +297,9 @@ function draw() {
       ? Math.floor(speedFloat)
       : Math.floor(speedFloat / 1.609);
     score.innerHTML = `${speed}${metric ? "km/h" : "mph"}`;
-    if (!!isAprilFools && !disableAprilFools) {
-      tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=I%20slapped%20Will%20Smith%20${speed}${metric ? "km/h" : "mph"
-        }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com&quote=I%20slapped%20Will%20Smith%20${speed}${metric ? "km/h" : "mph"
-        }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
-    } else {
-      tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=I%20slapped%20Chris%20Rock%20${speed}${metric ? "km/h" : "mph"
-        }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com&quote=I%20slapped%20Chris%20Rock%20${speed}${metric ? "km/h" : "mph"
-        }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
-    }
+    tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=I%20slapped%20Will%20Smith%20${speed}${metric ? "km/h" : "mph"
+      }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com&quote=I%20slapped%20Will%20Smith%20${speed}${metric ? "km/h" : "mph"
+      }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
     jiggy.stop();
 
     score.style.transition = ".2s";
@@ -400,12 +364,6 @@ function swapUnit() {
     document.getElementById("units").innerText = "Slap in Freedom Units 🇺🇸";
   }
   score.innerHTML = `0${metric ? "km/h" : "mph"}`;
-}
-
-function toggleAprilFools() {
-  disableAprilFools = !disableAprilFools;
-  document.getElementById("april-fools").classList.toggle("banner-drop-in");
-  resetGame();
 }
 
 function windowResized() {
