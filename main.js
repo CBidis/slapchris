@@ -13,7 +13,7 @@ document.addEventListener("touchmove", preventBehavior, {
 });
 function Face() {
   this.graphics = {
-    face: chris,
+    face: koulis,
     slapLeft: slapLeft,
     slapRight: slapRight,
   };
@@ -32,7 +32,7 @@ function Face() {
 
   if (!!isAprilFools && !disableAprilFools) {
     this.graphics = {
-      face: will,
+      face: koulis,
       slapLeft: will_slapLeft,
       slapRight: will_slapRight,
     };
@@ -222,6 +222,12 @@ function preload() {
   fishHand = loadImage("assets/fish.png");
   fishHandMove = loadImage("assets/fish2.png");
   handimg = loadImage("assets/hand3.png");
+
+  // Kiriakos Mitsotakis Faces
+  koulis = loadImage("assets/koulis.gif");
+  slapRight = loadImage("assets/slap_right.png");
+  slapLeft = loadImage("assets/slap_left.png");
+
 }
 
 function setup() {
@@ -307,17 +313,13 @@ function draw() {
       : Math.floor(speedFloat / 1.609);
     score.innerHTML = `${speed}${metric ? "km/h" : "mph"}`;
     if (!!isAprilFools && !disableAprilFools) {
-      tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=I%20slapped%20Will%20Smith%20${speed}${
-        metric ? "km/h" : "mph"
-      }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com&quote=I%20slapped%20Will%20Smith%20${speed}${
-        metric ? "km/h" : "mph"
-      }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
+      tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=I%20slapped%20Will%20Smith%20${speed}${metric ? "km/h" : "mph"
+        }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com&quote=I%20slapped%20Will%20Smith%20${speed}${metric ? "km/h" : "mph"
+        }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
     } else {
-      tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=I%20slapped%20Chris%20Rock%20${speed}${
-        metric ? "km/h" : "mph"
-      }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com&quote=I%20slapped%20Chris%20Rock%20${speed}${
-        metric ? "km/h" : "mph"
-      }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
+      tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=I%20slapped%20Chris%20Rock%20${speed}${metric ? "km/h" : "mph"
+        }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com&quote=I%20slapped%20Chris%20Rock%20${speed}${metric ? "km/h" : "mph"
+        }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
     }
     jiggy.stop();
 
@@ -398,4 +400,20 @@ function windowResized() {
 
   hand = new Hand();
   face = new Face();
+}
+
+function koulisWillSay() {
+  var koulisAtakes = ['assets/atakes/douleia.mp3', 'assets/atakes/einstein.mp3', 'assets/atakes/emvolio.mp3', 'assets/atakes/exarcheia.mp3', 'assets/atakes/fovos.mp3'
+  , 'assets/atakes/galopoules.mp3', 'assets/atakes/geiasas_paidia.mp3', 'assets/atakes/giati_gelate.mp3', 'assets/atakes/koulis_suriza.mp3', 'assets/atakes/ntolmadakia.mp3'
+  , 'assets/atakes/skopia.mp3', 'assets/atakes/superman.mp3'];
+  function randomPlay() {
+    //Get player by id
+    var a = document.getElementById('Player');
+    //Select random array.
+    var playNow = koulisAtakes[Math.floor(Math.random() * koulisAtakes.length)];
+    //Set new src
+    a.src = "/" + playNow;
+    //Play audio
+    a.play();
+  }
 }
