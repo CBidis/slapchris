@@ -186,7 +186,7 @@ span.fake-link {
 }
 
 .loadingIcon {
-  background-image: url("assets/hand2.png");
+  background-image: url("assets/koulis_loading.gif");
   width: 100px;
   height: 100px;
   background-size: contain;

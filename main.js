@@ -7,6 +7,13 @@ const byPassMinify = `// Hello there fellow nerd. Couldn't help sneaking a peak 
 /** Just a boolean global, JS Shitness */
 var firstAudioRun = true;
 
+/** just a 5 sec loader to check Koulis Image */
+window.onload = function(){
+  setTimeout(function(){
+    preload();
+  }, 50000);
+};
+
 function preventBehavior(e) {
   e.preventDefault();
 }
@@ -239,7 +246,6 @@ function setup() {
 }
 function initScreen() {
   background(250, 250, 250);
-  // fill('rgba(250,250,250,0.7)');
   textAlign(CENTER);
   image(hand.img, W / 2 - 100, H / 2 - 100, 200, 200);
   fill(0);
@@ -250,7 +256,7 @@ function initScreen() {
   textAlign(CENTER, CENTER);
 
   textSize(W / 9);
-  text("Chris Rock?", W / 2, H / 2 - 150);
+  text("Kiriakos Mitsotakis?", W / 2, H / 2 - 150);
 
   textSize(W / 15);
   text("Tap to start.", W / 2, H / 2 + 150);
@@ -258,7 +264,6 @@ function initScreen() {
 function resetGame() {
   tweet.style.fontSize = "1.05rem";
   giati_gelate.play();
-  // button.remove();
   hand = new Hand();
   face = new Face();
   score.style.transition = ".2s";
