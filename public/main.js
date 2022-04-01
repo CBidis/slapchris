@@ -6,7 +6,8 @@ const byPassMinify = `// Hello there fellow nerd. Couldn't help sneaking a peak 
 
 /** Just a boolean global, JS Shitness */
 var firstAudioRun = true;
-
+let koulisAtakes = [];
+let videoIndex = 0;
 /** just a 5 sec loader to check Koulis Image */
 window.onload = function () {
   setTimeout(function () {
@@ -199,7 +200,7 @@ function preload() {
   slapsfx4 = loadSound("assets/slap_str4.mp3");
   slapsfx5 = loadSound("assets/slap_str5.mp3");
   slapsfxfish = loadSound("assets/slap_fish.mp3");
-  giati_gelate = createAudio("./assets/atakes/giati_gelate.mp3");
+  giati_gelate = loadSound("./assets/atakes/giati_gelate.mp3");
   jiggy = loadSound("assets/jiggy.mp3");
 
   // Hands
@@ -215,7 +216,7 @@ function preload() {
   slapRight = loadImage("assets/slap_right.gif");
   slapLeft = loadImage("assets/slap_left.gif");
   //MP3's
-  koulisPaidiaMP3 = loadSound("/assets/atakes/geiasas_paidia.mp3");
+  koulisPaidiaMP3 = createAudio("/assets/atakes/geiasas_paidia.mp3");
   koulisDouleiaMP3 = loadSound("/assets/atakes/douleia.mp3");
   koulisEinsteinMP3 = loadSound("/assets/atakes/einstein.mp3");
   koulisEmvolioMP3 = loadSound("/assets/atakes/emvolio.mp3");
@@ -226,6 +227,19 @@ function preload() {
   koulisNtolmadakiaMP3 = loadSound("/assets/atakes/ntolmadakia.mp3");
   koulisSkopiaMP3 = loadSound("/assets/atakes/skopia.mp3");
   koulisSupermanMP3 = loadSound("/assets/atakes/superman.mp3");
+  koulisAtakes = [
+    koulisDouleiaMP3,
+    koulisFovosMP3,
+    koulisGalopoulesMP3,
+    giati_gelate,
+    koulisNtolmadakiaMP3,
+    koulisSupermanMP3,
+    koulisEinsteinMP3,
+    koulisEmvolioMP3,
+    koulisExarcheiaMP3,
+    koulisSyrizaMP3,
+    koulisSkopiaMP3,
+  ];
 }
 
 function setup() {
@@ -236,8 +250,10 @@ function setup() {
   cnv.style("left", "50%");
   cnv.style("top", "50%");
   cnv.style("transform", "translate(-50%, -50%)");
-  giati_gelate.volume(0.4);
-  giati_gelate.play();
+
+  koulisPaidiaMP3.volume(0.4);
+  koulisPaidiaMP3.play();
+
   hand = new Hand();
   face = new Face();
   if (W <= 500) {
@@ -264,7 +280,12 @@ function initScreen() {
 function resetGame() {
   secretCounter += 1;
   tweet.style.fontSize = "1.05rem";
-  giati_gelate.play();
+  koulisAtakes[videoIndex].play();
+  if (videoIndex === koulisAtakes?.length - 1) {
+    videoIndex = 0;
+  } else {
+    videoIndex += 1;
+  }
   hand = new Hand();
   face = new Face();
   score.style.transition = ".2s";
@@ -387,21 +408,8 @@ function windowResized() {
  * On first run President just says HI!
  */
 function koulisWillSay() {
-  const koulisAtakes = [
-    koulisDouleiaMP3,
-    koulisEinsteinMP3,
-    koulisEmvolioMP3,
-    koulisExarcheiaMP3,
-    koulisFovosMP3,
-    koulisGalopoulesMP3,
-    koulisSyrizaMP3,
-    koulisNtolmadakiaMP3,
-    koulisSkopiaMP3,
-    koulisSupermanMP3,
-  ];
-
   if (firstAudioRun) {
-    koulisPaidiaMP3.play();
+    giati_gelate.play();
     firstAudioRun = false;
   } else {
     var koulisRandomAudio =
