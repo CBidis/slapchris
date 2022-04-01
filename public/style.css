@@ -5,7 +5,7 @@
 }
 html,
 body {
-  background-color: #fff;
+  background-color: #9fe5ff;
   height: 100%;
   overscroll-behavior: contain;
   overflow: hidden;
@@ -22,6 +22,12 @@ body {
   transform: translate(-50%, -50%);
   background: linear-gradient(#f6f6f6, #fff);
   cursor: cell;
+  background-image: url("assets/ndbg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 424px;
+  
 }
 
 .loadingclass {
@@ -98,6 +104,9 @@ body {
   color: blue;
   height: 1.5rem;
   text-decoration: underline;
+  cursor: pointer !important;
+
+
 }
 
 #donation {
@@ -116,7 +125,7 @@ body {
   width: 100%;
   text-align: center;
   color: #fff;
-  background-color: #28b9ab;
+  background-color: #135cc7;
   z-index: 13;
   padding: 10px;
   position: relative;
@@ -128,6 +137,7 @@ body {
   margin: 0 auto;
   display: inline-block;
   transition: 1s;
+  cursor: pointer !important;
 }
 .exit-button {
   float: right;
@@ -135,6 +145,9 @@ body {
 
 span.fake-link {
   text-decoration: underline;
+  cursor: pointer !important;
+  color: #00a0dc;
+
 }
 .banner-drop-in {
   top: 0px!important;
@@ -164,6 +177,17 @@ span.fake-link {
   }
 }
 
+#koulis{
+  background-image: url("assets/koulis_loading.gif");
+    background-size: contain;
+    width: 100px;
+    background-repeat: no-repeat;
+    height: 100px;
+    position: absolute;
+    bottom: 141px;
+    margin: auto 50%;
+}
+
 @media screen and (max-width: 500px) {
   #tweet,
   #donation,
@@ -178,6 +202,11 @@ span.fake-link {
     left: 0;
     transform: translate(0, 0);
     border: none;
+    background-image: url("assets/ndbg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 424px;
   }
 
   #container:after {
@@ -251,5 +280,7 @@ span.fake-link {
     left: 0;
     top: unset;
     bottom: 0;
+  cursor: pointer !important;
+
   }
 }

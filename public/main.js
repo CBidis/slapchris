@@ -8,8 +8,8 @@ const byPassMinify = `// Hello there fellow nerd. Couldn't help sneaking a peak 
 var firstAudioRun = true;
 
 /** just a 5 sec loader to check Koulis Image */
-window.onload = function(){
-  setTimeout(function(){
+window.onload = function () {
+  setTimeout(function () {
     preload();
   }, 50000);
 };
@@ -79,7 +79,7 @@ function Hand() {
     if (startScreen === 1) {
       return handstart;
     }
-    if (Math.random() < 0.0001 || secretCounter >= 16) {
+    if (Math.random() < 0.0001 || secretCounter >= 3) {
       this.isFish = true;
       return fishHand;
     }
@@ -178,20 +178,20 @@ function touchStarted() {
 function mouseReleased() {
   if (
     !(
-      hand.xpos < face.xpos + face.height &&
-      hand.xpos + hand.height > face.xpos &&
-      hand.ypos < face.ypos + face.height &&
-      hand.height + hand.ypos > face.ypos
+      hand.xpos < face?.xpos + face?.height &&
+      hand.xpos + hand?.height > face?.xpos &&
+      hand.ypos < face?.ypos + face?.height &&
+      hand.height + hand?.ypos > face?.ypos
     )
   ) {
   }
-  if (hand.xpos < 0 || hand.xpos > W || hand.ypos < 0 || hand.ypos > H) {
+  if (hand?.xpos < 0 || hand?.xpos > W || hand?.ypos < 0 || hand?.ypos > H) {
     hand = new Hand();
   }
-  hand.endDrag();
+  hand?.endDrag();
 }
 function preload() {
-  robotoFont = loadFont("./assets/Roboto-Light.ttf");
+  robotoFont = loadFont("assets/Roboto-Light.ttf");
   slapsfx0 = loadSound("assets/slap_str0.mp3");
   slapsfx1 = loadSound("assets/slap_str1.mp3");
   slapsfx2 = loadSound("assets/slap_str2.mp3");
@@ -212,8 +212,8 @@ function preload() {
 
   // Kiriakos Mitsotakis Faces & Sounds
   koulis = loadImage("assets/koulis.gif");
-  slapRight = loadImage("assets/slap_right.png");
-  slapLeft = loadImage("assets/slap_left.png");
+  slapRight = loadImage("assets/slap_right.gif");
+  slapLeft = loadImage("assets/slap_left.gif");
   //MP3's
   koulisPaidiaMP3 = loadSound("/assets/atakes/geiasas_paidia.mp3");
   koulisDouleiaMP3 = loadSound("/assets/atakes/douleia.mp3");
@@ -262,6 +262,7 @@ function initScreen() {
   text("Tap to start.", W / 2, H / 2 + 150);
 }
 function resetGame() {
+  secretCounter += 1;
   tweet.style.fontSize = "1.05rem";
   giati_gelate.play();
   hand = new Hand();
@@ -302,9 +303,11 @@ function draw() {
       ? Math.floor(speedFloat)
       : Math.floor(speedFloat / 1.609);
     score.innerHTML = `${speed}${metric ? "χμ/ώρα" : "Μνημόνια"}`;
-    tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=%CE%A7%CE%B1%CF%83%CF%84%CE%BF%CF%8D%CE%BA%CE%B9%CF%83%CE%B1%20%CF%84%CE%BF%CE%BD%20%CE%9A%CE%BF%CF%8D%CE%BB%CE%B7%20%CE%BC%CE%B5%20${speed}${metric ? "χμ/ώρα" : "Μνημόνια"
-      }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com&quote=%CE%A7%CE%B1%CF%83%CF%84%CE%BF%CF%8D%CE%BA%CE%B9%CF%83%CE%B1%20%CF%84%CE%BF%CE%BD%20%CE%9A%CE%BF%CF%8D%CE%BB%CE%B7%20%CE%BC%CE%B5%20${speed}${metric ? "χμ/ώρα" : "Μνημόνια"
-      }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
+    tweet.innerHTML = `<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fslapchris.com&text=%CE%A7%CE%B1%CF%83%CF%84%CE%BF%CF%8D%CE%BA%CE%B9%CF%83%CE%B1%20%CF%84%CE%BF%CE%BD%20%CE%9A%CE%BF%CF%8D%CE%BB%CE%B7%20%CE%BC%CE%B5%20${speed}${
+      metric ? "χμ/ώρα" : "Μνημόνια"
+    }%21&hashtags=SlapChrisRock">Tweet your score.</a><br/><a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fslapchris.com&quote=%CE%A7%CE%B1%CF%83%CF%84%CE%BF%CF%8D%CE%BA%CE%B9%CF%83%CE%B1%20%CF%84%CE%BF%CE%BD%20%CE%9A%CE%BF%CF%8D%CE%BB%CE%B7%20%CE%BC%CE%B5%20${speed}${
+      metric ? "χμ/ώρα" : "Μνημόνια"
+    }%21" target="_blank" class="share-popup">Share on Facebook.</a>`;
     jiggy.stop();
 
     score.style.transition = ".2s";
@@ -356,8 +359,7 @@ function draw() {
   }
 }
 function swapUnit() {
-  secretCounter += 1;
-  if (secretCounter === 16) {
+  if (secretCounter === 3) {
     slapsfxfish.play();
     resetGame();
   }
@@ -385,16 +387,25 @@ function windowResized() {
  * On first run President just says HI!
  */
 function koulisWillSay() {
-
-  const koulisAtakes = [koulisDouleiaMP3, koulisEinsteinMP3, koulisEmvolioMP3, koulisExarcheiaMP3, koulisFovosMP3
-    , koulisGalopoulesMP3, koulisSyrizaMP3, koulisNtolmadakiaMP3, koulisSkopiaMP3, koulisSupermanMP3];
+  const koulisAtakes = [
+    koulisDouleiaMP3,
+    koulisEinsteinMP3,
+    koulisEmvolioMP3,
+    koulisExarcheiaMP3,
+    koulisFovosMP3,
+    koulisGalopoulesMP3,
+    koulisSyrizaMP3,
+    koulisNtolmadakiaMP3,
+    koulisSkopiaMP3,
+    koulisSupermanMP3,
+  ];
 
   if (firstAudioRun) {
     koulisPaidiaMP3.play();
     firstAudioRun = false;
-  }
-  else {
-    var koulisRandomAudio = koulisAtakes[Math.floor(Math.random() * koulisAtakes.length)];
+  } else {
+    var koulisRandomAudio =
+      koulisAtakes[Math.floor(Math.random() * koulisAtakes.length)];
     koulisRandomAudio.play();
   }
 }
