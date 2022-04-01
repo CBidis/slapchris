@@ -4,6 +4,9 @@ const byPassMinify = `// Hello there fellow nerd. Couldn't help sneaking a peak 
 // I'll be working on cleaning it and publicly releasing soon.
 // In the meantime, feel free to email info@slapchris.com with ideas, questions, suggestions or bugs!`;
 
+/** Just a boolean global, JS Shitness */
+var firstAudioRun = true;
+
 function preventBehavior(e) {
   e.preventDefault();
 }
@@ -205,7 +208,7 @@ function preload() {
   slapsfx4 = loadSound("assets/slap_str4.mp3");
   slapsfx5 = loadSound("assets/slap_str5.mp3");
   slapsfxfish = loadSound("assets/slap_fish.mp3");
-  ready = createAudio("./assets/ready.wav");
+  giati_gelate = createAudio("./assets/atakes/giati_gelate.mp3");
   jiggy = loadSound("assets/jiggy.mp3");
   // Chris Rock Faces
   chris = loadImage("assets/chris.png");
@@ -223,11 +226,22 @@ function preload() {
   fishHandMove = loadImage("assets/fish2.png");
   handimg = loadImage("assets/hand3.png");
 
-  // Kiriakos Mitsotakis Faces
+  // Kiriakos Mitsotakis Faces & Sounds
   koulis = loadImage("assets/koulis.gif");
   slapRight = loadImage("assets/slap_right.png");
   slapLeft = loadImage("assets/slap_left.png");
-
+  //MP3's
+  koulisPaidiaMP3 = loadSound("/assets/atakes/geiasas_paidia.mp3");
+  koulisDouleiaMP3 = loadSound("/assets/atakes/douleia.mp3");
+  koulisEinsteinMP3 = loadSound("/assets/atakes/einstein.mp3");
+  koulisEmvolioMP3 = loadSound("/assets/atakes/emvolio.mp3");
+  koulisExarcheiaMP3 = loadSound("/assets/atakes/exarcheia.mp3");
+  koulisFovosMP3 = loadSound("/assets/atakes/fovos.mp3");
+  koulisGalopoulesMP3 = loadSound("/assets/atakes/galopoules.mp3");
+  koulisSyrizaMP3 = loadSound("/assets/atakes/koulis_suriza.mp3");
+  koulisNtolmadakiaMP3 = loadSound("/assets/atakes/ntolmadakia.mp3");
+  koulisSkopiaMP3 = loadSound("/assets/atakes/skopia.mp3");
+  koulisSupermanMP3 = loadSound("/assets/atakes/superman.mp3");
 }
 
 function setup() {
@@ -241,8 +255,8 @@ function setup() {
   cnv.style("left", "50%");
   cnv.style("top", "50%");
   cnv.style("transform", "translate(-50%, -50%)");
-  ready.volume(0.4);
-  ready.play();
+  giati_gelate.volume(0.4);
+  giati_gelate.play();
   hand = new Hand();
   face = new Face();
   if (W <= 500) {
@@ -261,6 +275,7 @@ function initScreen() {
   fill(0);
   textSize(W / 15);
   textFont(robotoFont);
+
   text("How fast can you slap", W / 2, H / 2 - 200);
   textAlign(CENTER, CENTER);
 
@@ -272,7 +287,7 @@ function initScreen() {
 }
 function resetGame() {
   tweet.style.fontSize = "1.05rem";
-  ready.play();
+  giati_gelate.play();
   // button.remove();
   hand = new Hand();
   face = new Face();
@@ -402,18 +417,21 @@ function windowResized() {
   face = new Face();
 }
 
+/** selects a random element from Array
+ * and plays the selected preloaded Koulis MP3.
+ * On first run President just says HI!
+ */
 function koulisWillSay() {
-  var koulisAtakes = ['assets/atakes/douleia.mp3', 'assets/atakes/einstein.mp3', 'assets/atakes/emvolio.mp3', 'assets/atakes/exarcheia.mp3', 'assets/atakes/fovos.mp3'
-  , 'assets/atakes/galopoules.mp3', 'assets/atakes/geiasas_paidia.mp3', 'assets/atakes/giati_gelate.mp3', 'assets/atakes/koulis_suriza.mp3', 'assets/atakes/ntolmadakia.mp3'
-  , 'assets/atakes/skopia.mp3', 'assets/atakes/superman.mp3'];
-  function randomPlay() {
-    //Get player by id
-    var a = document.getElementById('Player');
-    //Select random array.
-    var playNow = koulisAtakes[Math.floor(Math.random() * koulisAtakes.length)];
-    //Set new src
-    a.src = "/" + playNow;
-    //Play audio
-    a.play();
+
+  const koulisAtakes = [koulisDouleiaMP3, koulisEinsteinMP3, koulisEmvolioMP3, koulisExarcheiaMP3, koulisFovosMP3
+    , koulisGalopoulesMP3, koulisSyrizaMP3, koulisNtolmadakiaMP3, koulisSkopiaMP3, koulisSupermanMP3];
+
+  if (firstAudioRun) {
+    koulisPaidiaMP3.play();
+    firstAudioRun = false;
+  }
+  else {
+    var koulisRandomAudio = koulisAtakes[Math.floor(Math.random() * koulisAtakes.length)];
+    koulisRandomAudio.play();
   }
 }
